@@ -25,16 +25,21 @@ export default {
 
 <style lang="scss">
   .layout{
-    max-width: 1320px;
+    max-width: 1050px;
+    width: 100%;
+    margin: 0 auto;
     display: flex;
     &-sidebar{
-      width: 275px;
+      width: 100%;
+      max-width: 300px;
     }
     &-flow{
-      width: 650px;
+      width: 100%;
+      max-width: 650px;
     }
     &-for-you{
-      width: 300px;
+      width: 100%;
+      max-width: 300px;
     }
   }
 

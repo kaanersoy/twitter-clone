@@ -17,10 +17,14 @@ export default {
 
 
 <style lang="scss">
+html, body, :root{
+  font-size: 14px;
+}
 @import './assets/theme/colors.scss';
 
 body{
   background-color: $color-bg;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
 </style>
