@@ -41,7 +41,12 @@ npm run serve
 ## ✔ TODO LIST
 
 > check the todos if you fix it.
+-  [ ] Add main flow for show tweets
+  - [ ] Create a tweet component 
 
+- [ ] Add `Trends` & `Who to follow` sections
+
+- [ ] Add `Profile` view for showing user profile
 ...
 
 ## 🖊Authors:
