@@ -1,12 +1,31 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
-  <router-view/>
+  <layout>
+    <router-view />
+  </layout>
 </template>
 
+<script>
+// import { defineComponent } from '@vue/composition-api'
+import Layout from '@/views/Layout'
+
+export default {
+  components: {
+    Layout
+  },
+  setup() {
+
+  },
+}
+</script>
+
+
 <style lang="scss">
+@import './assets/theme/colors.scss';
+
+body{
+  background-color: $color-bg;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
