@@ -65,7 +65,7 @@ export default {
 @import '@/assets/theme/colors';
 
 .add-tweet{
-  padding: .5rem;
+  padding: 10px 1rem;
   padding-bottom: 0;
   display: flex;
   width: 100%;
