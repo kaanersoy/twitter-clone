@@ -27,6 +27,12 @@
         More
       </sidebar-item>
       <more-menu v-if="isMenuOpened" />
+      <div
+        class="sidebar-tweet-button"
+        @click="$store.commit('toggleTweetButton')"
+      >
+        Tweet
+      </div>
     </div>
     <profile-popup />
   </aside>
@@ -99,6 +105,18 @@ aside{
           fill: #fff;
         }
       }
+    }
+    &-tweet-button{
+      width: 80%;
+      text-align: center;
+      padding: 1rem 0;
+      cursor: pointer;
+      background-color: $color-blue;
+      color: #fff;
+      font-weight: bold;
+      font-size: 1.2rem;
+      border-radius: 999px;
+      margin-top: 20px;
     }
   }
 }
