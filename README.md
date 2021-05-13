@@ -1,6 +1,6 @@
 # Twitter Clone with Vue.js
 
-It is a Twitter clone for job task.
+Just a twitter clone maded with Vue.js and Pure CSS.
 
 ## 💻 Techs
 
@@ -37,6 +37,9 @@ yarn serve
 # With npm:
 npm run serve
 ```
+
+## Demo
+You can visit the demo from: [Cwitter Demo](https://cwitter-demo.vercel.app/)
 
 ## ✔ TODO LIST
 
