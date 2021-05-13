@@ -42,7 +42,7 @@ export default {
   width: 260px;
   padding: 10px;
   background-color: $color-bg;
-  box-shadow: 0px 0px 1rem 0px rgba($color: $color-light-gray, $alpha: 0.3);
+  box-shadow: $shadow-white;
   border-radius: 5px;
   &-item{
     display: flex;
