@@ -31,7 +31,9 @@ export default {
 </script>
 
 <style lang="scss">
+@import '@/assets/theme/colors.scss';
   .layout{
+    min-height: 100%;
     max-width: 1290px;
     width: 100%;
     margin: 0 auto;
@@ -41,9 +43,12 @@ export default {
       max-width: 300px;
     }
     &-flow{
+      border-right: $border-dark;
+      border-left: $border-dark;
       width: 100%;
       max-width: 660px;
       .page-header{
+        padding: 0 1rem;
         color: #fff;
       }
     }
