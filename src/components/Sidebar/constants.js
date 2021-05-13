@@ -1,7 +1,7 @@
 export const ROUTES = [
   {
     name: 'Home',
-    path: '/home'
+    path: '/'
   },
   {
     name: 'Explore',
