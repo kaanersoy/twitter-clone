@@ -28,24 +28,7 @@
       </sidebar-item>
       <more-menu v-if="isMenuOpened" />
     </div>
-    <div class="sidebar-profile">
-      <div class="sidebar-profile-pic">
-        <img
-          :src="me.profile.pic"
-        >
-      </div>
-      <div class="sidebar-profile-items">
-        <div class="profile-info">
-          <p>Kaan Ersoy</p>
-          <p class="nickname">
-            @kaanersoy
-          </p>
-        </div>
-        <div class="more">
-          <base-icon icon="more" />
-        </div>
-      </div>
-    </div>
+    <profile-popup />
   </aside>
 </template>
 
@@ -53,6 +36,7 @@
 import SidebarItem from '@/components/Sidebar/Item'
 import { ROUTES } from '@/components/Sidebar/constants.js'
 import BaseIcon from '@/components/BaseIcon'
+import ProfilePopup from '@/components/Sidebar/ProfilePopup'
 import MoreMenu from '@/components/Sidebar/MoreMenu'
 import { mapGetters } from 'vuex'
 
@@ -62,7 +46,8 @@ export default {
   components:{
     SidebarItem,
     BaseIcon,
-    MoreMenu
+    MoreMenu,
+    ProfilePopup
   },
   data: function(){
     return {
@@ -78,7 +63,6 @@ export default {
   methods: {
     toggleMenu: function(){
       this.isMenuOpened = !this.isMenuOpened;
-      console.log("toggled")
     }
   }
 }
@@ -115,47 +99,6 @@ aside{
           fill: #fff;
         }
       }
-    }
-    &-profile{
-      display: flex;
-      align-items: center;
-      width: 100%;
-      padding: 0 1rem;
-      border-radius: 999px;
-      &:hover{
-        background-color: rgba($color: $color-blue, $alpha: 0.3);
-      }
-      &-pic{
-        width: 3rem;
-        img{
-          border-radius: 999px;
-          width: 100%;
-        }
-      }
-      &-items{
-        margin-left: 10px;
-        display: flex;
-        flex-grow: 1;
-        align-items: center;
-        justify-content: space-between;
-        .profile-info{
-          p{
-            color: #fff;
-            &.nickname{
-              color: $color-dark-gray;
-            }
-          }
-        }
-        .more{
-          width: 2rem;
-          height: 2rem;
-          svg{
-            width: 100%;
-            fill: #fff;
-            display: block;
-          }
-        }
-      } 
     }
   }
 }
