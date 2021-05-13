@@ -32,7 +32,7 @@ export default {
 
 <style lang="scss">
   .layout{
-    max-width: 1050px;
+    max-width: 1290px;
     width: 100%;
     margin: 0 auto;
     display: flex;
@@ -42,14 +42,14 @@ export default {
     }
     &-flow{
       width: 100%;
-      max-width: 650px;
+      max-width: 660px;
       .page-header{
         color: #fff;
       }
     }
     &-for-you{
       width: 100%;
-      max-width: 300px;
+      max-width: 330px;
     }
   }
 
