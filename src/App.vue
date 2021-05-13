@@ -17,6 +17,13 @@ export default {
 
 
 <style lang="scss">
+*{
+  box-sizing: border-box;
+  &::before, &::after{
+    box-sizing: inherit;
+  }
+}
+
 html, body, :root{
   font-size: 14px;
 }
