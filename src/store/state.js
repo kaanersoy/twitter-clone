@@ -5,5 +5,6 @@ export default {
       nickname: '@kaanersoy',
       name: 'Kaan Ersoy'
     }
-  }
+  },
+  isTweetPopupActive: true
 }
