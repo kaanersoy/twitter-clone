@@ -1,7 +1,7 @@
 <template>
   <aside>
     <div class="sidebar-logo">
-      <router-link to="/home">
+      <router-link to="/">
         <base-icon icon="twitter" />
       </router-link>
     </div>
@@ -12,6 +12,18 @@
       :to="route.path"
     >
       {{ route.name }}
+    </sidebar-item>
+    <sidebar-item
+      icon="profile"
+      to="/profile"
+    >
+      Profile
+    </sidebar-item>
+    <sidebar-item
+      icon="more"
+      @click="toggleMenu"
+    >
+      More
     </sidebar-item>
   </aside>
 </template>
@@ -30,9 +42,16 @@ export default {
   },
   data: function(){
     return {
-      ROUTES
+      ROUTES,
+      isMenuOpened: true
     }
   },
+  methods: {
+    toggleMenu: function(){
+      this.isMenuOpened = !this.isMenuOpened;
+      console.log("toggled")
+    }
+  }
 }
 </script>
 

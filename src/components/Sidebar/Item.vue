@@ -1,5 +1,8 @@
 <template>
-  <router-link :to="to">
+  <component
+    :is="isStringAndValid(to) ? 'router-link' : 'div'"
+    :to="isStringAndValid(to) ? to : ''"
+  >
     <div class="sidebar-item">
       <div class="sidebar-item-logo">
         <base-icon
@@ -11,7 +14,7 @@
         <slot />
       </div>
     </div>
-  </router-link>
+  </component>
 </template>
 
 <script>
@@ -33,7 +36,12 @@ export default {
     },
     to: {
       type: String,
-      default: '/'
+      default: ''
+    }
+  },
+  methods: {
+    isStringAndValid: function(str){
+      return str && typeof str == 'string' && str.length > 0
     }
   }
 }
@@ -52,31 +60,35 @@ a{
   cursor: pointer;
   padding: 12px;
   border-radius: 999px;
-  transition: 200ms ease-in-out;
+  transition: 120ms ease-in-out;
+  color: #fff;
   &-logo{
     width: 2rem;
     height: 2rem;
     svg{
+      transition: 20ms ease-in-out fill;
       fill: #fff;
     }
   }
   &-content{
+    transition: 20ms ease-in-out color;
     margin: 0 20px;
-    color: #fff;
+    color: inherit;
     font-size: 20px;
     font-weight: bold;
   }
   &:hover{
     background-color: rgba($color: $color-blue, $alpha: 0.2);
-    &-logo{
-      svg{
-        fill: #fff;
-      }
+    &{
+      color: $color-blue;
     }
-    &-content{
+    svg{
+      fill: $color-blue;
     }
   }
 }
+
+
 
 .router-link-active, .router-link-exact-active{
   .sidebar-item{
