@@ -4,16 +4,44 @@
       <img :src="me.profile.pic">
     </div>
     <div class="add-tweet-content">
-      <div class="text-section">
+      <div class="tweet-section">
         <textarea
           v-model="tweetContent.text"
           placeholder="What's happening?"
         />
+        <div
+          v-if="tweetContent.imageList"
+          class="tweet-section-images"
+        >
+          <div
+            v-for="(image, i) in tweetContent.imageList"
+            :key="i"
+            class="image-container"
+          >
+            <img :src="image.url">
+            <div
+              class="close-button"
+              @click="deleteImage(i)"
+            >
+              <base-icon icon="close" />
+            </div>
+          </div>
+        </div>
       </div>
       <div class="controls">
         <div class="controls-media">
-          <div class="controls-media-item">
+          <div
+            class="controls-media-item"
+            @click="$refs.uploadImageInput.click()"
+          >
             <base-icon icon="image" />
+            <input
+              ref="uploadImageInput"
+              type="file"
+              accept="image/*"
+              hidden
+              @change="showFiles"
+            >
           </div>
           <div class="controls-media-item">
             <base-icon icon="gif" />
@@ -37,7 +65,7 @@
 
 <script>
 import BaseIcon from '@/components/BaseIcon'
-import {mapGetters} from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
   name: 'AddTweet',
   components:{
@@ -46,7 +74,8 @@ export default {
   data: function() {
     return {
       tweetContent: {
-        text: ''
+        text: '',
+        imageList: []
       }
     };
   },
@@ -56,6 +85,17 @@ export default {
     }),
     hasTweetText(){
       return this.tweetContent.text && this.tweetContent.text.length > 0 
+    }
+  },
+  methods: {
+    showFiles: function(e){
+      const [file] = e.target.files;
+      const url = URL.createObjectURL(file);
+      // console.log({url});
+      this.tweetContent.imageList.push({url})
+    },
+    deleteImage(index){
+      this.tweetContent.imageList.splice(index, 1)
     }
   },
 }
@@ -82,7 +122,7 @@ export default {
   &-content{
     margin-left: 15px;
     width: 100%;
-    .text-section{
+    .tweet-section{
       width: 100%;
       textarea{
         appearance: none;
@@ -101,6 +141,41 @@ export default {
         &:focus{
           border: none;
           outline: none;
+        }
+      }
+      &-images{
+        display: flex;
+        padding: 1rem;
+        .image-container{
+          & + .image-container{
+            margin-left: 15px;
+          }
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: relative;
+          flex-grow: 1;
+          img{
+            width: 100%;
+          }
+          .close-button{
+            position: absolute;
+            background-color: rgba($color: $color-dark-gray, $alpha: 0.3);
+            top: 0;
+            right: 0;
+            cursor: pointer;
+            margin-top: 10px;
+            margin-right: 10px;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 999px;
+            padding: 7px;
+            svg{
+              width: 100%;
+              height: 100%;
+              fill: #fff;
+            }
+          }
         }
       }
     }
