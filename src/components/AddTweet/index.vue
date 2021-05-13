@@ -91,7 +91,6 @@ export default {
     showFiles: function(e){
       const [file] = e.target.files;
       const url = URL.createObjectURL(file);
-      // console.log({url});
       this.tweetContent.imageList.push({url})
     },
     deleteImage(index){
