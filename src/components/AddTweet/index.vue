@@ -13,7 +13,16 @@
       <div class="controls">
         <div class="controls-media">
           <div class="controls-media-item">
-            <base-icon />
+            <base-icon icon="image" />
+          </div>
+          <div class="controls-media-item">
+            <base-icon icon="gif" />
+          </div>
+          <div class="controls-media-item">
+            <base-icon icon="graph" />
+          </div>
+          <div class="controls-media-item">
+            <base-icon icon="schedule" />
           </div>
         </div>
         <div class="controls-submit">
@@ -102,10 +111,21 @@ export default {
       align-items: center;
       padding: 10px 0;
       &-media{
-        width: 2rem;
-        height: 2rem;
-        svg{
-          fill: $color-blue
+        display: flex;
+        gap: 4px;
+        &-item{
+          width: 32px;
+          height: 32px;
+          border-radius: 999px;
+          cursor:pointer;
+          padding: 5px;
+          svg{
+            width: 100%;
+            fill: $color-blue
+          }
+          &:hover{
+            background-color: rgba($color: $color-blue, $alpha: 0.3);
+          }
         }
       }
       &-submit{
