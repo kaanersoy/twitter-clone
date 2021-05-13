@@ -25,6 +25,7 @@
     >
       More
     </sidebar-item>
+    <more-menu v-if="isMenuOpened" />
   </aside>
 </template>
 
@@ -32,18 +33,20 @@
 import SidebarItem from '@/components/Sidebar/Item'
 import { ROUTES } from '@/components/Sidebar/constants.js'
 import BaseIcon from '@/components/BaseIcon'
+import MoreMenu from '@/components/Sidebar/MoreMenu'
 
 
 export default {
   name: 'Sidebar',
   components:{
     SidebarItem,
-    BaseIcon
+    BaseIcon,
+    MoreMenu
   },
   data: function(){
     return {
       ROUTES,
-      isMenuOpened: true
+      isMenuOpened: false
     }
   },
   methods: {
@@ -59,6 +62,7 @@ export default {
 @import '@/assets/theme/colors.scss';
 
 aside{
+  position: relative;
   .sidebar{
     &-logo{
       width: 2rem;
