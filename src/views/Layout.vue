@@ -4,6 +4,13 @@
       <sidebar />  
     </div>
     <div class="layout-flow">
+      <div class="page-header">
+        <div
+          v-if="true"
+          class="back-button"
+        />
+        <h2>Home</h2>
+      </div>
       <slot />
     </div>
     <div class="layout-for-you">
@@ -36,6 +43,9 @@ export default {
     &-flow{
       width: 100%;
       max-width: 650px;
+      .page-header{
+        color: #fff;
+      }
     }
     &-for-you{
       width: 100%;
