@@ -16,16 +16,23 @@
     <div class="layout-for-you">
       some-for-you-bar-goes-there
     </div>
+    <tweet-popup v-if="getTweetPopupState" />
   </div>
 </template>
 
 <script>
 import Sidebar from '@/components/Sidebar'
+import TweetPopup from '@/components/TweetPopup'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'Layout',
   components: {
-    Sidebar
+    Sidebar,
+    TweetPopup,
+  },
+  computed: {
+    ...mapGetters(['getTweetPopupState'])
   }
 }
 </script>
