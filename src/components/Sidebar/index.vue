@@ -25,8 +25,8 @@
         @click="toggleMenu"
       >
         More
+        <more-menu v-if="isMenuOpened" />
       </sidebar-item>
-      <more-menu v-if="isMenuOpened" />
       <div
         class="sidebar-tweet-button"
         @click="$store.commit('toggleTweetButton')"

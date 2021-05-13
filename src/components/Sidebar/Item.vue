@@ -55,6 +55,7 @@ a{
 }
 
 .sidebar-item{
+  position: relative;
   display: inline-flex;
   align-items: center;
   cursor: pointer;
