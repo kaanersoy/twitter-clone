@@ -65,12 +65,14 @@ aside{
   position: relative;
   .sidebar{
     &-logo{
-      width: 2rem;
-      height: 2rem;
-      padding: 12px;
+      width: 50px;
+      height: 50px;
+      padding: 10px;
       border-radius: 999px;
       transition: 200ms ease-in-out;
       svg{
+        display: block;
+        width: 100%;
         fill: #fff;
       }
       &:hover{
