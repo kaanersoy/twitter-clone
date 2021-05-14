@@ -47,6 +47,7 @@
 </template>
 
 <script>
+import {login} from '@/services/api'
 import BaseIcon from '@/components/BaseIcon'
 export default {
   name:'LoginView',
@@ -56,8 +57,8 @@ export default {
   data: function(){
     return {
       userInfo: {
-        username: '',
-        password: ''
+        username: 'kaanersoy',
+        password: 'password'
       },
       validationError: {
         username: false,
@@ -66,8 +67,13 @@ export default {
     }
   },
   methods:{
-    handleLogin: function(){
-      console.log("Login Handled")
+    handleLogin: async function(){
+      const response = await login(this.userInfo);
+      if(!response.data.user){
+        return
+      }
+      this.$store.dispatch('setLoginInfo', response.data.user)
+      return this.$router.push('/')
     },
     validateForm: function(){
       this.validationError.username = false
