@@ -1,3 +1,5 @@
+import {defaultUser} from '@/services/functions'
+
 export default {
   setLoginInfo({commit}, payload){
     commit('setMe', payload);
@@ -6,18 +8,5 @@ export default {
   setLogOut({commit}){
     commit('setMe', defaultUser())
     commit('setLoginStatus', false)
-  }
-}
-
-function defaultUser(){
-  return {
-    id: '',
-    username: '',
-    password: '',
-    profile: {
-      pic: '',
-      nickname: '',
-      name: ''
-    }
   }
 }
