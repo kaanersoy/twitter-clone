@@ -1,17 +1,21 @@
 <template>
-  <layout>
+  <component :is="getLoginStatus ? 'layout' : 'div'">
     <router-view />
-  </layout>
+  </component>
 </template>
 
 <script>
 import 'normalize.css'
 import Layout from '@/views/Layout'
+import { mapGetters } from 'vuex'
 
 export default {
   components: {
     Layout
   },
+  computed: {
+    ...mapGetters(['getLoginStatus'])
+  }
 }
 </script>
 
