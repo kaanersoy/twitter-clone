@@ -1,4 +1,7 @@
-export const users = [
+import Tweet from '@/models/Tweet'
+import User from '../models/User'
+
+const userData = [
   {
     id: '12a1s3dz24c635q2e213a2dw1',
     username: 'kaanersoy',
@@ -10,7 +13,17 @@ export const users = [
     }
   }
 ]
+
+export const users = [
+  new User(userData[0])
+]
+
 export const userOneAuthInfo = {
-  username: users[0].username,
-  password: users[0].password
+  username: userData[0].username,
+  password: userData[0].password
 }
+
+export const tweets = [
+  new Tweet(users[0], 'CONTNETETNNETETETN'),
+  new Tweet(users[0], 'CONTNETETNNETETETN'),
+]
