@@ -4,7 +4,20 @@ export default {
     commit('setLoginStatus', true)
   },
   setLogOut({commit}){
-    // commit('setMe', {})
+    commit('setMe', defaultUser())
     commit('setLoginStatus', false)
+  }
+}
+
+function defaultUser(){
+  return {
+    id: '',
+    username: '',
+    password: '',
+    profile: {
+      pic: '',
+      nickname: '',
+      name: ''
+    }
   }
 }
