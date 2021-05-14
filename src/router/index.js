@@ -21,7 +21,6 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   const isLoggedIn = store.getters.getLoginStatus
-  console.log(isLoggedIn);
   if(isLoggedIn === false){
     if(to.name !== 'Login'){
       next({path: '/login'})
