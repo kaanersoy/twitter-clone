@@ -1,20 +1,23 @@
 <template>
   <component :is="getLoginStatus ? 'layout' : 'div'">
     <router-view />
+    <loading v-if="getLoadingStatus" />
   </component>
 </template>
 
 <script>
 import 'normalize.css'
 import Layout from '@/views/Layout'
+import Loading from '@/components/Loading'
 import { mapGetters } from 'vuex'
 
 export default {
   components: {
-    Layout
+    Layout,
+    Loading
   },
   computed: {
-    ...mapGetters(['getLoginStatus'])
+    ...mapGetters(['getLoginStatus', 'getLoadingStatus'])
   }
 }
 </script>
