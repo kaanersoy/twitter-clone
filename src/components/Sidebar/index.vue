@@ -11,12 +11,14 @@
         :key="i"
         :icon="route.name.toLowerCase()"
         :to="route.path"
+        :required="route.req"        
       >
         {{ route.name }}
       </sidebar-item>
       <sidebar-item
         icon="profile"
         :to="`/${me.username}`"
+        required
       >
         Profile
       </sidebar-item>

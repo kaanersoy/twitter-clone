@@ -1,7 +1,7 @@
 <template>
   <component
-    :is="isStringAndValid(to) ? 'router-link' : 'div'"
-    :to="isStringAndValid(to) ? to : ''"
+    :is="required ? 'router-link' : 'div'"
+    :to="required ? to : ''"
   >
     <div class="sidebar-item">
       <div class="sidebar-item-logo">
@@ -37,6 +37,10 @@ export default {
     to: {
       type: String,
       default: ''
+    },
+    required: {
+      type: Boolean,
+      default: false
     }
   },
   methods: {

@@ -1,7 +1,8 @@
 export const ROUTES = [
   {
     name: 'Home',
-    path: '/'
+    path: '/',
+    req: true
   },
   {
     name: 'Explore',
