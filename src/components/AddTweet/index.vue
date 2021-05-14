@@ -55,7 +55,7 @@
         </div>
         <div class="controls-submit">
           <button
-            :disabled="!hasTweetText"
+            :disabled="!hasTweetText()"
             @click="handleSubmit"
           >
             Tweet
@@ -67,45 +67,56 @@
 </template>
 
 <script>
+import { ref } from 'vue'
 import BaseIcon from '@/components/BaseIcon'
 import { mapGetters } from 'vuex'
+
 export default {
   name: 'AddTweet',
   components:{
     BaseIcon
   },
-  data: function() {
-    return {
-      tweetContent: this.defaultTweetContent()
-    };
-  },
-  computed:{
-    ...mapGetters({
-      me: 'getMe'
-    }),
-    hasTweetText(){
-      return this.tweetContent.text && this.tweetContent.text.length > 0 
-    }
-  },
-  methods: {
-    showFiles: function(e){
-      const [file] = e.target.files;
-      const url = URL.createObjectURL(file);
-      this.tweetContent.imageList.push({url})
-    },
-    deleteImage(index){
-      this.tweetContent.imageList.splice(index, 1)
-    },
-    handleSubmit(){
-      this.$emit('submit-click', this.tweetContent)
-      this.tweetContent = this.defaultTweetContent();
-    },
-    defaultTweetContent(){
+  setup(props, {emit}){
+    const tweetContent = ref(defaultTweetContent())
+    
+    function defaultTweetContent(){
       return {
         text: '',
         imageList: []
       }
     }
+    
+    function handleSubmit(){
+      emit('submit-click', this.tweetContent)
+      tweetContent.value = defaultTweetContent();
+    }
+
+    function hasTweetText(){
+      return tweetContent.value.text.length > 0 && tweetContent.value.text
+    }
+
+    function showFiles(e){
+      const [file] = e.target.files;
+      const url = URL.createObjectURL(file);
+      this.tweetContent.imageList.push({url})
+    }
+
+    function deleteImage(index){
+      this.tweetContent.imageList.splice(index, 1)
+    }
+
+    return {
+      tweetContent,
+      handleSubmit,
+      hasTweetText,
+      showFiles,
+      deleteImage
+    }
+  },
+  computed:{
+    ...mapGetters({
+      me: 'getMe'
+    }),
   },
 }
 </script>
