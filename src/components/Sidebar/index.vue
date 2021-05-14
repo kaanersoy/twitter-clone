@@ -16,7 +16,7 @@
       </sidebar-item>
       <sidebar-item
         icon="profile"
-        to="/profile"
+        :to="`/${me.username}`"
       >
         Profile
       </sidebar-item>
