@@ -6,5 +6,6 @@ export default {
       name: 'Kaan Ersoy'
     }
   },
-  isTweetPopupActive: false
+  isTweetPopupActive: false,
+  isLoggedIn: false
 }

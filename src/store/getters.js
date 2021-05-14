@@ -4,5 +4,8 @@ export default {
   },
   getTweetPopupState: (state) => {
     return state.isTweetPopupActive
+  },
+  getLoginStatus: (state) => {
+    return state.isLoggedIn
   }
 }
