@@ -6,14 +6,14 @@
     <div class="tweet-content">
       <div class="tweet-content-header">
         <p>
-          Simon Hoiberg 
-          <span class="nickname">@SimonHoiberg</span>
+          {{ tweetData.author.profile.name }}
+          <span class="nickname">{{ tweetData.author.profile.nickname }}</span>
           <span>&#183;</span>
           <span class="created-at">2h</span>
         </p>
       </div>
       <div class="tweet-content-body">
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione maxime fugit molestiae amet quam adipisci, eius totam necessitatibus, quidem tempore saepe. Commodi maiores beatae rem rerum tenetur, voluptates fugit voluptatibus.</p>
+        <p>{{ tweetData.content }}</p>
       </div>
       <div class="tweet-content-actions">
         <div class="action-item comment">
@@ -38,10 +38,17 @@
 
 <script>
 import BaseIcon from '@/components/BaseIcon'
+
 export default {
   name: 'Tweet',
   components:{
     BaseIcon
+  },
+  props: {
+    tweetData: {
+      type: Object,
+      default: () => {}
+    }
   }
 }
 </script>
@@ -66,6 +73,7 @@ export default {
   }
   &-content{
     margin-left: 10px;
+    flex-grow: 1;
     &-header{
       p{
         margin: 8px 0;
