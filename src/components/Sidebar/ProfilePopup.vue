@@ -51,7 +51,10 @@
           <p>Add an existing account</p>
         </div>
         <hr class="popup-spacing">
-        <div class="popup-body-item">
+        <div
+          class="popup-body-item"
+          @click="handleLogOut"
+        >
           <p>Logout from <span>{{ me.profile.nickname }}</span></p>
         </div>
       </div>
@@ -81,8 +84,12 @@ export default {
   methods:{
     toggleMenu: function(){
       this.isMenuOpened = !this.isMenuOpened
+    },
+    handleLogOut(){
+      this.$store.dispatch('setLogOut');
+      this.$router.push('/login');
     }
-  },
+  }
 }
 </script>
 
