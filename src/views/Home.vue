@@ -1,9 +1,16 @@
 <template>
   <div class="home">
-    <add-tweet />
+    <add-tweet @submit-click="handleTweetSubmit" />
     <hr class="gap">
-    <div class="tweet-wrapper">
-      <tweet />
+    <div
+      v-if="tweetData"
+      class="tweet-wrapper"
+    >
+      <tweet
+        v-for="(tweet, i) in reversedTweetData"
+        :key="i"
+        :tweet-data="tweet"
+      />
     </div>
   </div>
 </template>
@@ -11,10 +18,44 @@
 <script>
 import AddTweet from '@/components/AddTweet'
 import Tweet from '@/components/Tweet'
+import { getTweets, uploadTweet } from '@/services/api'
+import { mapGetters } from 'vuex'
+import TweetModel from '@/models/Tweet'
+import User from '@/models/User'
+
 export default {
   components: {
     AddTweet,
     Tweet
+  },
+  data: function(){
+    return{
+      tweetData: []
+    }
+  },
+  computed: {
+    ...mapGetters(['getMe']),
+    reversedTweetData(){
+      return this.tweetData.slice().reverse()
+    }
+  },
+  mounted: async function() {
+    this.getTweets()
+  },
+  methods: {
+    async handleTweetSubmit(data){
+      const newTweet = new TweetModel(new User(this.getMe) ,data.text);
+      try{
+        await uploadTweet(newTweet);
+        await this.getTweets()
+      }catch(err){
+        console.log(err);
+      }
+    },
+    getTweets: async function(){
+      const response = await getTweets();
+      this.tweetData = response.data.tweets;
+    }
   }
 }
 </script>
