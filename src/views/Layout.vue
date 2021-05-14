@@ -6,9 +6,12 @@
     <div class="layout-flow">
       <div class="page-header">
         <div
-          v-if="true"
+          v-if="$route.path != '/'"
           class="back-button"
-        />
+          @click="$router.push('/')"
+        >
+          <base-icon icon="back" />
+        </div>
         <h2>Home</h2>
       </div>
       <slot />
@@ -22,6 +25,7 @@
 
 <script>
 import Sidebar from '@/components/Sidebar'
+import BaseIcon from '@/components/BaseIcon'
 import TweetPopup from '@/components/TweetPopup'
 import { mapGetters } from 'vuex'
 
@@ -30,6 +34,7 @@ export default {
   components: {
     Sidebar,
     TweetPopup,
+    BaseIcon
   },
   computed: {
     ...mapGetters(['getTweetPopupState'])
