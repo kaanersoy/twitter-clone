@@ -54,7 +54,10 @@
           </div>
         </div>
         <div class="controls-submit">
-          <button :disabled="!hasTweetText">
+          <button
+            :disabled="!hasTweetText"
+            @click="handleSubmit"
+          >
             Tweet
           </button>
         </div>
@@ -73,10 +76,7 @@ export default {
   },
   data: function() {
     return {
-      tweetContent: {
-        text: '',
-        imageList: []
-      }
+      tweetContent: this.defaultTweetContent()
     };
   },
   computed:{
@@ -95,6 +95,16 @@ export default {
     },
     deleteImage(index){
       this.tweetContent.imageList.splice(index, 1)
+    },
+    handleSubmit(){
+      this.$emit('submit-click', this.tweetContent)
+      this.tweetContent = this.defaultTweetContent();
+    },
+    defaultTweetContent(){
+      return {
+        text: '',
+        imageList: []
+      }
     }
   },
 }
