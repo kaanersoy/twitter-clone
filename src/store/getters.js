@@ -7,5 +7,8 @@ export default {
   },
   getLoginStatus: (state) => {
     return state.isLoggedIn
+  },
+  getLoadingStatus: (state) => {
+    return state.globalIsLoading
   }
 }
