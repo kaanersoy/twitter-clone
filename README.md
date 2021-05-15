@@ -41,6 +41,12 @@ npm run serve
 ## Demo
 You can visit the demo from: [Cwitter Demo](https://cwitter-demo.vercel.app/)
 
+#### Auth info
+| -- | -- |
+| ------------- | ------------- |
+| username | kaanersoy  |
+| password | password  |
+
 ## ✔ TODO LIST
 
 > check the todos if you fix it.
