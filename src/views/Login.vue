@@ -68,12 +68,19 @@ export default {
   },
   methods:{
     handleLogin: async function(){
-      const response = await login(this.userInfo);
-      if(!response.data.user){
-        return
+      try{
+        const response = await login(this.userInfo);
+        if(!response.data.user){
+          return
+        }
+        this.$store.dispatch('setLoginInfo', response.data.user)
+        return this.$router.push('/')
+      }catch(err) {
+        this.$notification({
+          type: 'error',
+          message: 'Failed when authentication'
+        })
       }
-      this.$store.dispatch('setLoginInfo', response.data.user)
-      return this.$router.push('/')
     },
     validateForm: function(){
       this.validationError.username = false
