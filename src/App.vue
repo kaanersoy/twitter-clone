@@ -2,6 +2,11 @@
   <component :is="getLoginStatus ? 'layout' : 'div'">
     <router-view />
     <loading v-if="getLoadingStatus" />
+    <notification
+      v-for="(notification,i) in getActiveNotifications"
+      :key="i"
+      :data="notification"
+    />
   </component>
 </template>
 
@@ -9,15 +14,26 @@
 import 'normalize.css'
 import Layout from '@/views/Layout'
 import Loading from '@/components/Loading'
+import Notification from '@/components/Notification'
 import { mapGetters } from 'vuex'
 
 export default {
   components: {
     Layout,
-    Loading
+    Loading,
+    Notification
+  },
+  data() {
+    return {
+      globalNotification: false
+    }
   },
   computed: {
-    ...mapGetters(['getLoginStatus', 'getLoadingStatus'])
+    ...mapGetters([
+      'getLoginStatus', 
+      'getLoadingStatus',
+      'getActiveNotifications'
+    ])
   }
 }
 </script>
