@@ -47,9 +47,16 @@ export default {
       const newTweet = new TweetModel(new User(this.getMe) ,data.text);
       try{
         await uploadTweet(newTweet);
-        await this.getTweets()
+        await this.getTweets();
+        this.$notification({
+          type: 'info',
+          message: 'Tweet sended!'
+        })
       }catch(err){
-        console.log(err);
+        this.$notification({
+          type: 'error',
+          message: 'Error in send tweet'
+        })
       }
     },
     getTweets: async function(){
