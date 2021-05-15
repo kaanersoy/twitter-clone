@@ -25,12 +25,17 @@ export async function uploadTweet(body){
 
 async function request(settings){
   store.commit("setLoadingStatus", true)
-  if(settings.body){
-    const response = await axios[settings.type](settings.path, settings.body);
+  try {
+    if(settings.body){
+      const response = await axios[settings.type](settings.path, settings.body);
+      store.commit("setLoadingStatus", false)
+      return response;
+    }
+    const response = await axios[settings.type](settings.path);
     store.commit("setLoadingStatus", false)
     return response;
+  }catch(err) {
+    store.commit("setLoadingStatus", false)
+    throw err
   }
-  const response = await axios[settings.type](settings.path);
-  store.commit("setLoadingStatus", false)
-  return response;
 }
