@@ -4,5 +4,6 @@ export default {
   me: defaultUser(),
   isTweetPopupActive: false,
   isLoggedIn: false,
-  globalIsLoading: false
+  globalIsLoading: false,
+  activeNotifications: []
 }

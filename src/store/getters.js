@@ -10,5 +10,8 @@ export default {
   },
   getLoadingStatus: (state) => {
     return state.globalIsLoading
+  },
+  getActiveNotifications(state) {
+    return state.activeNotifications;
   }
 }

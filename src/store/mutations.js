@@ -10,5 +10,8 @@ export default {
   },
   setLoginStatus(state, payload){
     state.isLoggedIn = payload
+  },
+  addNotification(state, payload){
+    state.activeNotifications.push(payload)
   }
 }
