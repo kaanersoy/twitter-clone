@@ -13,5 +13,8 @@ export default {
   },
   getActiveNotifications(state) {
     return state.activeNotifications;
+  },
+  getMyProfileId(state) {
+    return state.me.id;
   }
 }
