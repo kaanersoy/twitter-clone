@@ -1,3 +1,5 @@
+import store from '@/store'
+
 export function notification({type, message}){
-  this.$store.commit('addNotification', {type, message});
+  store.commit('addNotification', {type, message});
 }
