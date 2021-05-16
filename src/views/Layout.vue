@@ -12,7 +12,17 @@
         >
           <base-icon icon="back" />
         </div>
-        <h2>Home</h2>
+        <template v-if="$route.name == 'Profile'">
+          <div class="profile-info">
+            <h2>
+              {{ getMe.profile.name }}
+            </h2>
+            <span>24 tweets</span>
+          </div>
+        </template>
+        <template v-else>
+          <h2>{{ $route.name }}</h2>
+        </template>
       </div>
       <slot />
     </div>
@@ -37,7 +47,7 @@ export default {
     BaseIcon
   },
   computed: {
-    ...mapGetters(['getTweetPopupState'])
+    ...mapGetters(['getMe','getTweetPopupState'])
   }
 }
 </script>
@@ -60,8 +70,41 @@ export default {
       width: 100%;
       max-width: 660px;
       .page-header{
-        padding: 0 1rem;
+        border-bottom: $border-dark;
+        padding: .5rem;
         color: #fff;
+        display: flex;
+        align-items: center;
+        h2{
+          margin: 1rem 0;
+        }
+        .back-button{
+          width: 2.5rem;
+          height: 2.5rem;
+          margin-right: 20px;
+          padding: 6px;
+          border-radius: 999px;
+          cursor: pointer;
+          &:hover{
+            background-color: rgba($color: $color-blue, $alpha: 0.3);
+          }
+          svg{
+            width: 100%;
+            height: 100%;
+            transform: translateX(-3px);
+            fill: $color-blue;
+          }
+        }
+        .profile-info{
+          h2{
+            margin: 0;
+            margin-bottom: 3px;
+          }
+          span{
+            color: $color-dark-gray;
+            font-size: 12px;
+          }
+        }
       }
     }
     &-for-you{
