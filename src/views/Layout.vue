@@ -1,7 +1,9 @@
 <template>
   <div class="layout">
     <div class="layout-sidebar">
-      <sidebar />  
+      <div class="layout-sidebar-fixed-container">
+        <sidebar />
+      </div>
     </div>
     <div class="layout-flow">
       <div class="page-header">
@@ -61,8 +63,13 @@ export default {
     margin: 0 auto;
     display: flex;
     &-sidebar{
-      width: 100%;
-      max-width: 300px;
+        width: 100%;
+        max-width: 300px;
+      &-fixed-container{
+        position: fixed;
+        width: 100%;
+        max-width: inherit;
+      }
     }
     &-flow{
       border-right: $border-dark;
