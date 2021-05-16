@@ -67,18 +67,26 @@
 </template>
 
 <script>
-import { ref } from 'vue'
+import { ref , getCurrentInstance} from 'vue'
 import BaseIcon from '@/components/BaseIcon'
 import { mapGetters } from 'vuex'
+import Tweet from '@/models/Tweet'
+import User from '@/models/User'
+import {uploadTweet} from '@/services/api'
+import { useStore } from 'vuex'
 
 export default {
   name: 'AddTweet',
   components:{
     BaseIcon
   },
-  setup(props, {emit}){
+  setup(props, context){
     const tweetContent = ref(defaultTweetContent())
-    
+    const store = useStore();
+
+    const app = getCurrentInstance();
+    const $notification = app.parent.appContext.config.globalProperties.$notification;
+
     function defaultTweetContent(){
       return {
         text: '',
@@ -86,8 +94,22 @@ export default {
       }
     }
     
-    function handleSubmit(){
-      emit('submit-click', this.tweetContent)
+    async function handleSubmit(){
+      const newTweet = new Tweet(new User(store.getters.getMe), tweetContent.value.text);
+      try{
+        await uploadTweet(newTweet);
+        $notification({
+          type: 'info',
+          message: 'Tweet sended!'
+        })
+      }catch(err){
+        $notification({
+          type: 'error',
+          message: 'Error in send tweet'
+        })
+      }
+
+      context.emit('submit-click')
       tweetContent.value = defaultTweetContent();
     }
 
@@ -225,6 +247,7 @@ export default {
       }
       &-submit{
         button{
+          cursor: pointer;
           background-color: $color-blue;
           color: #fff;
           font-weight: bold;
@@ -233,6 +256,7 @@ export default {
           border: none;
           border-radius: 9999px;
           &:disabled{
+            cursor: no-drop;
             background-color: rgba($color: $color-blue, $alpha: 0.3);
             color: rgba($color: #fff, $alpha: 0.3);
           }
