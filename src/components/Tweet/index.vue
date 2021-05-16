@@ -9,7 +9,7 @@
           {{ tweetData.author.profile.name }}
           <span class="nickname">{{ tweetData.author.profile.nickname }}</span>
           <span>&#183;</span>
-          <span class="created-at">2h</span>
+          <span class="created-at">{{ moment(tweetData.createdAt).fromNow() }}</span>
         </p>
       </div>
       <div class="tweet-content-body">
@@ -38,6 +38,7 @@
 
 <script>
 import BaseIcon from '@/components/BaseIcon'
+import moment from 'moment'
 
 export default {
   name: 'Tweet',
@@ -49,6 +50,9 @@ export default {
       type: Object,
       default: () => {}
     }
+  },
+  methods:{
+    moment
   }
 }
 </script>
