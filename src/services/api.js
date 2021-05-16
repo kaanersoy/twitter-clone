@@ -10,6 +10,12 @@ mock.onPost("/tweets").reply(function (config) {
   tweets.push(JSON.parse(config.data))
   return [200, tweets]
 });
+mock.onPost("/me", {id: users[0].id}).reply(200, users[0]);
+mock.onGet(`/tweets/${users[0].id}`).reply(200, {
+  tweets: tweets.filter(twt => 
+    twt.author.id == users[0].id
+  )
+});
 
 export async function login(body){
   return request({type: 'post', path: '/auth', body})
@@ -19,8 +25,17 @@ export async function getTweets(){
   return request({type: 'get', path: '/tweets'})
 }
 
+export async function getMe(body){
+  return request({type: 'post', path: '/me', body})
+}
+
 export async function uploadTweet(body){
   return request({type: 'post', path: '/tweets', body})
+}
+
+export async function getMyTweets(body){
+  console.log(body)
+  return request({type: 'get', path: `/tweets/${body.id}`})
 }
 
 async function request(settings){
