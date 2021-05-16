@@ -18,10 +18,8 @@
 <script>
 import AddTweet from '@/components/AddTweet'
 import Tweet from '@/components/Tweet'
-import { getTweets, uploadTweet } from '@/services/api'
+import { getTweets } from '@/services/api'
 import { mapGetters } from 'vuex'
-import TweetModel from '@/models/Tweet'
-import User from '@/models/User'
 
 export default {
   components: {
@@ -43,15 +41,9 @@ export default {
     this.getTweets()
   },
   methods: {
-    async handleTweetSubmit(data){
-      const newTweet = new TweetModel(new User(this.getMe) ,data.text);
+    async handleTweetSubmit(){
       try{
-        await uploadTweet(newTweet);
         await this.getTweets();
-        this.$notification({
-          type: 'info',
-          message: 'Tweet sended!'
-        })
       }catch(err){
         this.$notification({
           type: 'error',
