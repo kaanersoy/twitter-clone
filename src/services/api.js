@@ -34,7 +34,6 @@ export async function uploadTweet(body){
 }
 
 export async function getMyTweets(body){
-  console.log(body)
   return request({type: 'get', path: `/tweets/${body.id}`})
 }
 
