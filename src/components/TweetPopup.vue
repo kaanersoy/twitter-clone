@@ -16,7 +16,7 @@
           <base-icon icon="close" />
         </div>
       </div>
-      <add-tweet />  
+      <add-tweet @submit-click="handleSubmit" />  
     </div>
   </div>
 </template>
@@ -38,6 +38,9 @@ export default {
         ref: this.$refs.popupWrapper
       }
       if(object.target !== object.ref) return
+      this.$store.commit("toggleTweetButton")
+    },
+    handleSubmit(){
       this.$store.commit("toggleTweetButton")
     }
   }
