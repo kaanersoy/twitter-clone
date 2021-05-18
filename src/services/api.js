@@ -11,12 +11,30 @@ mock.onPost("/tweets").reply(function (config) {
   tweets.push(JSON.parse(config.data))
   return [200, tweets]
 });
+
 mock.onPost("/me", {id: users[0].id}).reply(200, users[0]);
 mock.onGet(`/tweets/${users[0].id}`).reply(200, {
   tweets: tweets.filter(twt => 
     twt.author.id == users[0].id
   )
 });
+
+mock.onPut('/me').reply(function (config) {
+  const request = JSON.parse(config.data)
+
+  const me = users.find(usr => usr.id == store.getters.getMyProfileId)
+  const myIndex = users.indexOf(me);
+
+  Object.keys(request).map(key => {
+    users[myIndex].profile[key] = request[key]
+  })
+
+  const response = {
+    message: 'Editted succesfully!',
+    updatedProfile: users[myIndex].profile
+  }
+  return [200, response]
+})
 
 
 export async function login(body){
@@ -42,6 +60,13 @@ export async function uploadTweet(body){
 export async function getMyTweets(body){
   return request({type: 'get', path: `/tweets/${body.id}`})
 }
+
+
+export async function setProfileInfo(body){
+  return request({type: 'put', path: `/me`, body})
+}
+
+
 
 async function request(settings){
   store.commit("setLoadingStatus", true)
