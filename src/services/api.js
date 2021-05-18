@@ -15,7 +15,7 @@ mock.onPost("/tweets").reply(function (config) {
 mock.onDelete("/tweets").reply(function (config) {
   const tweetId = config.tweetId
 
-  const findedTweet = tweets.find(twt => twt.id = tweetId)
+  const findedTweet = tweets.find(twt => twt.id == tweetId)
   const indexOfTweet = tweets.indexOf(findedTweet)
 
   tweets.splice(indexOfTweet, 1);
