@@ -1,6 +1,5 @@
 import { defaultUser } from '@/services/functions'
 import { setProfileInfo } from '@/services/api'
-import app from '../main'
 
 export default {
   setLoginInfo({commit}, payload){
@@ -17,11 +16,7 @@ export default {
       commit('editProfileInfo', payload)
       commit('setEditProfileStatus', false)
     }catch(err){
-      const notification = app.config.globalProperties.$notification;
-      notification({
-        type: 'error',
-        message: 'Error when dispatch action(please report the issue)'
-      })
+      console.log(err)
     }
   }
 }
