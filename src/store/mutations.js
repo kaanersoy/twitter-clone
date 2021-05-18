@@ -1,3 +1,5 @@
+let index = 0;
+
 export default {
   toggleTweetButton(state){
     state.isTweetPopupActive = !state.isTweetPopupActive
@@ -12,6 +14,11 @@ export default {
     state.isLoggedIn = payload
   },
   addNotification(state, payload){
-    state.activeNotifications.push(payload)
+    state.activeNotifications.push({...payload, index})
+    console.log(state.activeNotifications);
+  },
+  deleteNotification(state, payload){
+    const oldState = state.activeNotifications;
+    state.activeNotifications = oldState.filter(item => item.index != payload);
   }
 }
