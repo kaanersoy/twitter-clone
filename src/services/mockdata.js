@@ -35,3 +35,18 @@ export const tweets = [
   new Tweet(users[0], 'CONTNETETNNETETETN'),
   new Tweet(users[0], 'CONTNETETNNETETETN'),
 ]
+
+export const trends = [
+  {
+    name: '#Salı',
+    tweetsCount: 155614
+  },
+  {
+    name: '#ProductHunt',
+    tweetsCount: 121353
+  },
+  {
+    name: '#DummyTrend',
+    tweetsCount: 90420
+  }
+]

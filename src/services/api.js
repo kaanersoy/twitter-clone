@@ -1,11 +1,12 @@
 import axios from "axios";
 import MockAdapter from "axios-mock-adapter";
 import store from '@/store'
-import {userOneAuthInfo, users, tweets} from './mockdata'
+import {userOneAuthInfo, users, tweets, trends} from './mockdata'
 
 const mock = new MockAdapter(axios, {delayResponse: 500});
 mock.onPost("/auth", userOneAuthInfo).reply(200, {user: users[0]});
 mock.onGet("/tweets").reply(200, {tweets});
+mock.onGet("/trends").reply(200, {trends});
 mock.onPost("/tweets").reply(function (config) {
   tweets.push(JSON.parse(config.data))
   return [200, tweets]
@@ -17,12 +18,17 @@ mock.onGet(`/tweets/${users[0].id}`).reply(200, {
   )
 });
 
+
 export async function login(body){
   return request({type: 'post', path: '/auth', body})
 }
 
 export async function getTweets(){
   return request({type: 'get', path: '/tweets'})
+}
+
+export async function getTrends(){
+  return request({type: 'get', path: '/trends'})
 }
 
 export async function getMe(body){
