@@ -33,22 +33,41 @@
         </div>
       </div>
     </div>
+    <div class="tweet-edit-button">
+      <div
+        class="tweet-edit-button-icon"
+        @click="isEditMenuOpened = !isEditMenuOpened"
+      >
+        <BaseIcon icon="editTweet" />
+      </div>
+      <EditTweetPopup
+        v-if="isEditMenuOpened"
+        :tweet-id="tweetData.id"
+      />
+    </div>
   </div>
 </template>
 
 <script>
 import BaseIcon from '@/components/BaseIcon'
+import EditTweetPopup from '@/components/Tweet/EditTweetPopup'
 import moment from 'moment'
 
 export default {
   name: 'Tweet',
   components:{
-    BaseIcon
+    BaseIcon,
+    EditTweetPopup
   },
   props: {
     tweetData: {
       type: Object,
       default: () => {}
+    }
+  },
+  data(){
+    return {
+      isEditMenuOpened: false,
     }
   },
   methods:{
@@ -64,6 +83,25 @@ export default {
   padding: 1rem;
   display: flex;
   transition: 100ms ease background-color;
+  &-edit-button{
+    position: relative;
+    &-icon{
+      width: 2rem;
+      height: 2rem;
+      border-radius: 999px;
+      padding: 4px;
+      cursor: pointer;
+      svg{
+        fill: $color-dark-gray;
+      }
+      &:hover{
+        background-color: rgba($color: $color-blue, $alpha: 0.3);
+        svg{
+          fill: $color-blue
+        }
+      }
+    }
+  }
   &:hover{
     background-color: rgba($color: $color-dark-gray, $alpha: 0.2);
   }
