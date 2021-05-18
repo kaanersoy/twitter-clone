@@ -2,7 +2,7 @@
 
 Twitter clone made with Vue.js, Vue Router, Vuex and Axios-mock-adapter(for fake REST API).
 
-There is no and CSS component library :)
+There is no any CSS component library :)
 
 > TODO: Responsive design for all views there isn't any responsive design.
 
