@@ -5,6 +5,7 @@
     <notification
       v-for="(notification,i) in getActiveNotifications"
       :key="i"
+      :index="i"
       :data="notification"
     />
   </component>
