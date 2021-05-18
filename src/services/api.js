@@ -3,7 +3,7 @@ import MockAdapter from "axios-mock-adapter";
 import store from '@/store'
 import {userOneAuthInfo, users, tweets, trends} from './mockdata'
 
-const mock = new MockAdapter(axios, {delayResponse: 500});
+const mock = new MockAdapter(axios, {delayResponse: 250});
 mock.onPost("/auth", userOneAuthInfo).reply(200, {user: users[0]});
 mock.onGet("/tweets").reply(200, {tweets});
 mock.onGet("/trends").reply(200, {trends});

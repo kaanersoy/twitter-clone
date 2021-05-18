@@ -59,6 +59,7 @@ You can visit the demo from: [Cwitter Demo](https://cwitter-demo.vercel.app/)
 
 - Added profile editting popup for Profile view
 - Added profile editting endpoint for fake REST-API
+- Edit & Delete option to tweets
 
 
 ## 🖊Authors:
