@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import { getMyTweets } from '@/services/api'
+import { getUsersTweets } from '@/services/api'
 import Tweet from '@/components/Tweet'
 import { mapGetters } from 'vuex'
 export default {
@@ -46,10 +46,11 @@ export default {
   },
   async mounted(){
     try{
-      const response = await getMyTweets({
+      const response = await getUsersTweets({
         id: this.getMyProfileId
       })
       this.userTweets = response.data.tweets;
+      this.$store.commit("setProfileTweetCount", response.data.tweets.length)
     }catch(err){
       this.$notification({
         type: 'error',

@@ -27,10 +27,9 @@ mock.onDelete("/tweets").reply(function (config) {
 });
 
 mock.onPost("/me", {id: users[0].id}).reply(200, users[0]);
+
 mock.onGet(`/tweets/${users[0].id}`).reply(200, {
-  tweets: tweets.filter(twt => 
-    twt.author.id == users[0].id
-  )
+  tweets: tweets.filter(twt => twt.author.id == users[0].id)
 });
 
 mock.onPut('/me').reply(function (config) {
@@ -75,7 +74,7 @@ export async function deleteTweet(body){
   return request({type: 'delete', path: '/tweets', body})
 }
 
-export async function getMyTweets(body){
+export async function getUsersTweets(body){
   return request({type: 'get', path: `/tweets/${body.id}`})
 }
 
