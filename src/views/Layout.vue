@@ -19,7 +19,7 @@
             <h2>
               {{ getMe.profile.name }}
             </h2>
-            <span>24 tweets</span>
+            <span>{{ getProfileTweetCount }} tweets</span>
           </div>
         </template>
         <template v-else>
@@ -56,7 +56,7 @@ export default {
     SearchBar
   },
   computed: {
-    ...mapGetters(['getMe','getTweetPopupState'])
+    ...mapGetters(['getMe','getTweetPopupState', 'getProfileTweetCount'])
   }
 }
 </script>
