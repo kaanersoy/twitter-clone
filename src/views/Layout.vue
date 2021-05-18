@@ -29,7 +29,10 @@
       <slot />
     </div>
     <div class="layout-for-you">
-      some-for-you-bar-goes-there
+      <div class="layout-for-you-fixed">
+        <SearchBar />
+        <Trends />
+      </div>
     </div>
     <tweet-popup v-if="getTweetPopupState" />
   </div>
@@ -37,6 +40,8 @@
 
 <script>
 import Sidebar from '@/components/Sidebar'
+import Trends from '@/components/Trends'
+import SearchBar from '@/components/SearchBar'
 import BaseIcon from '@/components/BaseIcon'
 import TweetPopup from '@/components/TweetPopup'
 import { mapGetters } from 'vuex'
@@ -46,7 +51,9 @@ export default {
   components: {
     Sidebar,
     TweetPopup,
-    BaseIcon
+    BaseIcon,
+    Trends,
+    SearchBar
   },
   computed: {
     ...mapGetters(['getMe','getTweetPopupState'])
@@ -76,6 +83,7 @@ export default {
       border-left: $border-dark;
       width: 100%;
       max-width: 660px;
+      min-height: 100vh;
       .page-header{
         border-bottom: $border-dark;
         padding: .5rem;
@@ -117,6 +125,13 @@ export default {
     &-for-you{
       width: 100%;
       max-width: 330px;
+      margin-left: 1rem;
+      margin-top: 1rem;
+      &-fixed{
+        position: fixed;
+        width: 100%;
+        max-width: inherit;
+      }
     }
   }
 
