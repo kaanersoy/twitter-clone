@@ -12,6 +12,7 @@
     "axios-mock-adapter": "^1.19.0",
     "core-js": "^3.6.5",
     "moment": "^2.29.1",
+    "nanoid": "^3.1.23",
     "normalize.css": "^8.0.1",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0",
