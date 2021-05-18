@@ -25,7 +25,10 @@ export default {
       state.me.profile[key] = payload[key]
     })
   },
-  setEditProfileStatus(state,payload){
+  setEditProfileStatus(state, payload){
     state.editProfilePopup = payload  
+  },
+  setProfileTweetCount(state, payload){
+    state.profileTweetCount = payload
   }
 }

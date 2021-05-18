@@ -7,4 +7,5 @@ export default {
   globalIsLoading: false,
   activeNotifications: [],
   editProfilePopup: false,
+  profileTweetCount: 0,
 }

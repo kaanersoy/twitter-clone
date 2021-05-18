@@ -19,5 +19,8 @@ export default {
   },
   getEditProfileStatus(state) {
     return state.editProfilePopup
+  },
+  getProfileTweetCount(state) {
+    return state.profileTweetCount
   }
 }
