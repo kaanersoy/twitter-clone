@@ -100,7 +100,7 @@ export default {
         await uploadTweet(newTweet);
         $notification({
           type: 'info',
-          message: 'Tweet sended!'
+          message: 'Tweet sent!'
         })
       }catch(err){
         $notification({
