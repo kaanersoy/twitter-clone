@@ -10,6 +10,7 @@ const routes = [
   {
     path: '/login',
     name: 'Login',
+    beforeEnter: loginGuardian,
     component: () => import('@/views/Login.vue')
   },
   {
@@ -36,6 +37,15 @@ router.beforeEach((to, from, next) => {
   }
   else next()
 })
+
+function loginGuardian(to, from, next){
+  const isLoggedIn = store.getters.getLoginStatus
+  if(isLoggedIn){
+    next(from)
+  }else{
+    next()
+  }
+}
 
 
 export default router
