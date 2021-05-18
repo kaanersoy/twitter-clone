@@ -15,10 +15,17 @@ export default {
   },
   addNotification(state, payload){
     state.activeNotifications.push({...payload, index})
-    console.log(state.activeNotifications);
   },
   deleteNotification(state, payload){
     const oldState = state.activeNotifications;
     state.activeNotifications = oldState.filter(item => item.index != payload);
+  },
+  editProfileInfo(state, payload){
+    Object.keys(payload).map(key => {
+      state.me.profile[key] = payload[key]
+    })
+  },
+  setEditProfileStatus(state,payload){
+    state.editProfilePopup = payload  
   }
 }

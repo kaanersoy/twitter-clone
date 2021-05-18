@@ -16,5 +16,8 @@ export default {
   },
   getMyProfileId(state) {
     return state.me.id;
+  },
+  getEditProfileStatus(state) {
+    return state.editProfilePopup
   }
 }

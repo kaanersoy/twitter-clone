@@ -5,5 +5,6 @@ export default {
   isTweetPopupActive: false,
   isLoggedIn: false,
   globalIsLoading: false,
-  activeNotifications: []
+  activeNotifications: [],
+  editProfilePopup: false,
 }
