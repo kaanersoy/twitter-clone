@@ -33,9 +33,16 @@ export default {
         const response = await deleteTweet({
           tweetId: this.tweetId
         });
-        console.log(response)
+        this.$notification({
+          type: 'success',
+          message: `Tweet ${response.data.tweetId} deleted.`
+        })
+        this.$emit('delete-tweet')
       }catch(err){
-        console.log(err)
+        this.$notification({
+          type: 'error',
+          message: 'Error when delete tweet'
+        })
       }
     }
   }

@@ -43,6 +43,7 @@
       <EditTweetPopup
         v-if="isEditMenuOpened"
         :tweet-id="tweetData.id"
+        @delete-tweet="handleDelete"
       />
     </div>
   </div>
@@ -71,7 +72,10 @@ export default {
     }
   },
   methods:{
-    moment
+    moment,
+    handleDelete(){
+      this.$emit('delete-tweet')
+    }
   }
 }
 </script>
