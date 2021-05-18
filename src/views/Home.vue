@@ -7,8 +7,8 @@
       class="tweet-wrapper"
     >
       <tweet
-        v-for="(tweet, i) in reversedTweetData"
-        :key="i"
+        v-for="tweet in reversedTweetData"
+        :key="tweet.id"
         :tweet-data="tweet"
         @delete-tweet="handleTweetDelete"
       />

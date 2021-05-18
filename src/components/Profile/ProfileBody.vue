@@ -19,8 +19,8 @@
       class="tweets-wrapper"
     >
       <tweet
-        v-for="(tweet, i) in userTweets"
-        :key="i"
+        v-for="tweet in userTweets"
+        :key="tweet.id"
         :tweet-data="tweet"
       />
     </div>
