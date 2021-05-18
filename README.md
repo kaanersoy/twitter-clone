@@ -7,6 +7,7 @@ Just a twitter clone maded with Vue.js and Pure CSS.
 - Vue.js
 - Vue Router
 - Vuex
+- axios-mock-adapter (for fake REST API)
 - ...
 
 ## 📦 Installation
@@ -53,13 +54,12 @@ You can visit the demo from: [Cwitter Demo](https://cwitter-demo.vercel.app/)
 ## ✔ TODO LIST
 
 > check the todos if you fix it.
-- [ ] Add main flow for show tweets
-  - [ ] Create a tweet component 
+- [X] Add main flow for show tweets
+  - [X] Create a tweet component 
 
-- [ ] Add `Trends` & `Who to follow` sections
+- [X] Add `Trends` section
 
-- [ ] Add `Profile` view for showing user profile
-...
+- [X] Add `Profile` view for showing user profile
 
 ## 🖊Authors:
 
