@@ -9,7 +9,10 @@
           <img :src="me.profile.pic_full">
         </div>
         <div class="profile-actions-edit">
-          <div class="edit-button">
+          <div
+            class="edit-button"
+            @click="$store.commit('setEditProfileStatus', true)"
+          >
             Edit profile
           </div>
         </div>
@@ -60,13 +63,11 @@ export default {
   components:{
     BaseIcon
   },
-  data(){
-    return{
-      me: {}
-    }
-  },
   computed:{
-    ...mapGetters(['getMyProfileId']),
+    ...mapGetters({
+      getMyProfileId: 'getMyProfileId',
+      me: 'getMe'
+    }),
     profileWebsite(){
       return {
         website: new URL(new URL(this.me.profile.website)).host,
@@ -80,7 +81,7 @@ export default {
   async mounted(){
     try {
       const response = await getMe({id: this.getMyProfileId});
-      this.me = response.data;
+      this.$store.commit('setMe', response.data);
       return
     } catch (err) {
       this.$notification({
