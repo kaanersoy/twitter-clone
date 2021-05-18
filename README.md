@@ -11,30 +11,33 @@ Just a twitter clone maded with Vue.js and Pure CSS.
 
 ## 📦 Installation
 
-#### 📰 Clone the project
+### 📰 Clone the project
 
 ```bash
 git clone https://github.com/kaanersoy/twitter-clone.git
 ```
 
-#### 🔻 Install Dependencies
+### 🔻 Install Dependencies
 
+With yarn:
 ```bash
-cd <project-path>
-# With yarn:
-yarn
+cd <project-path> && yarn
+```
 
-# With npm:
+With npm:
+```bash
 npm install
 ```
 
-#### 🏃‍♂️ Start the project
+### 🏃‍♂️ Start the project
 
+With yarn:
 ```bash
-# With yarn:
 yarn serve
+```
 
-# With npm:
+With npm:
+```
 npm run serve
 ```
 
