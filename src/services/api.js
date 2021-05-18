@@ -12,6 +12,20 @@ mock.onPost("/tweets").reply(function (config) {
   return [200, tweets]
 });
 
+mock.onDelete("/tweets").reply(function (config) {
+  const tweetId = config.tweetId
+
+  const findedTweet = tweets.find(twt => twt.id = tweetId)
+  const indexOfTweet = tweets.indexOf(findedTweet)
+
+  tweets.splice(indexOfTweet, 1);
+
+  return [200, {
+    message: 'Deleted successfully',
+    tweetId
+  }]
+});
+
 mock.onPost("/me", {id: users[0].id}).reply(200, users[0]);
 mock.onGet(`/tweets/${users[0].id}`).reply(200, {
   tweets: tweets.filter(twt => 
@@ -55,6 +69,10 @@ export async function getMe(body){
 
 export async function uploadTweet(body){
   return request({type: 'post', path: '/tweets', body})
+}
+
+export async function deleteTweet(body){
+  return request({type: 'delete', path: '/tweets', body})
 }
 
 export async function getMyTweets(body){
