@@ -10,6 +10,7 @@
         v-for="(tweet, i) in reversedTweetData"
         :key="i"
         :tweet-data="tweet"
+        @delete-tweet="handleTweetDelete"
       />
     </div>
   </div>
@@ -54,6 +55,9 @@ export default {
     getTweets: async function(){
       const response = await getTweets();
       this.tweetData = response.data.tweets;
+    },
+    async handleTweetDelete(){
+      this.handleTweetSubmit()
     }
   }
 }
