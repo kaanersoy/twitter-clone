@@ -27,7 +27,7 @@ cd <project-path> && yarn
 
 With npm:
 ```bash
-npm install
+cd <project-path> && npm install
 ```
 
 ### 🏃‍♂️ Start the project
