@@ -28,8 +28,10 @@ mock.onDelete("/tweets").reply(function (config) {
 
 mock.onPost("/me", {id: users[0].id}).reply(200, users[0]);
 
-mock.onGet(`/tweets/${users[0].id}`).reply(200, {
-  tweets: tweets.filter(twt => twt.author.id == users[0].id)
+mock.onGet(`/tweets/${users[0].id}`).reply(function() {
+  return [200, {
+    tweets: tweets.filter(twt => twt.author.id == users[0].id)
+  }]
 });
 
 mock.onPut('/me').reply(function (config) {
