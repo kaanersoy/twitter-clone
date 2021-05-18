@@ -58,6 +58,7 @@ export default {
 @import '@/assets/theme/colors.scss';
 .trends{
   background-color: rgba($color: $color-dark-gray, $alpha: 0.1);
+  border-radius: 1rem;
   &-wrapper{
   }
   &-header{
