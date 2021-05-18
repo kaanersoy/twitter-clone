@@ -30,12 +30,12 @@ export default {
   methods:{
     async handleDelete(){
       try{
-        const response = await deleteTweet({
+        await deleteTweet({
           tweetId: this.tweetId
         });
         this.$notification({
           type: 'success',
-          message: `Tweet ${response.data.tweetId} deleted.`
+          message: `Tweet deleted.`
         })
         this.$emit('delete-tweet')
       }catch(err){
