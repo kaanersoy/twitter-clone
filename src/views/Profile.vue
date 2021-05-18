@@ -4,12 +4,14 @@
   >
     <profile-header />
     <profile-body />
+    <EditProfilePopup v-if="getEditProfileStatus" />
   </div>
 </template>
 
 <script>
 import ProfileBody from '@/components/Profile/ProfileBody'
 import ProfileHeader from '@/components/Profile/ProfileHeader'
+import EditProfilePopup from '@/components/EditProfilePopup'
 
 import { mapGetters } from 'vuex';
 
@@ -17,14 +19,15 @@ export default {
   name: 'ProfileView',
   components:{
     ProfileBody,
-    ProfileHeader
+    ProfileHeader,
+    EditProfilePopup
   },
   data(){
     return{
     }
   },
   computed:{
-    ...mapGetters(['getMyProfileId']),
+    ...mapGetters(['getMyProfileId', "getEditProfileStatus"]),
   },
   async mounted(){
   }
