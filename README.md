@@ -41,10 +41,10 @@ With npm:
 npm run serve
 ```
 
-## Demo
+## 🔴 Demo 
 You can visit the demo from: [Cwitter Demo](https://cwitter-demo.vercel.app/)
 
-#### Auth info
+### 🔐 Auth info
 | -- | -- |
 | ------------- | ------------- |
 | username | kaanersoy  |
