@@ -23,6 +23,7 @@
 
 <script>
 import BaseIcon from '@/components/BaseIcon'
+
 export default {
   name: 'Notification',
   components:{
@@ -32,6 +33,10 @@ export default {
     data: {
       type: Object,
       default: () => {}
+    },
+    index: {
+      type: Number,
+      default: 0
     }
   },
   data: function(){
@@ -42,6 +47,7 @@ export default {
   mounted() {
     setTimeout(() => this.isActive = true, 200)
     setTimeout(() => this.isActive = false, 3000)
+    setTimeout(() => this.$store.commit('deleteNotification', this.index), 3100)
   }
 }
 </script>
@@ -66,6 +72,7 @@ export default {
   border-radius: 8px;
   transform: translate(-50%, 0%);
   text-align: center;
+  color: #fff;
   &-wrapper{
     position: relative;
   }
@@ -79,6 +86,7 @@ export default {
     svg{
       width: 100%;
       height: 100%;
+      fill: #fff;
     }
   }
 }
