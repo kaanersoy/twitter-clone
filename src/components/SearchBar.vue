@@ -48,6 +48,7 @@ export default {
   padding: 1rem;
   border-radius: 999px;
   margin: 1rem 0;
+  margin-top: 0;
   border: 1px solid rgba($color: $color-dark-gray, $alpha: 0);
   transition: border 150ms ease;
   &-wrapper{
