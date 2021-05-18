@@ -1,4 +1,4 @@
-import Tweet from '@/models/Tweet'
+// import Tweet from '@/models/Tweet'
 import User from '../models/User'
 
 const userData = [
@@ -32,8 +32,8 @@ export const userOneAuthInfo = {
 }
 
 export const tweets = [
-  new Tweet(users[0], 'CONTNETETNNETETETN'),
-  new Tweet(users[0], 'CONTNETETNNETETETN'),
+  // new Tweet(users[0], 'CONTNETETNNETETETN'),
+  // new Tweet(users[0], 'CONTNETETNNETETETN'),
 ]
 
 export const trends = [
