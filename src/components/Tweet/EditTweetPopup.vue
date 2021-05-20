@@ -1,6 +1,15 @@
 <template>
   <div class="edit-tweet-popup">
     <div
+      class="edit-tweet-popup-item edit"
+      @click="handleEdit"
+    >
+      <div class="icon">
+        <BaseIcon icon="pen" />
+      </div>
+      <span>Edit Tweet</span>
+    </div>
+    <div
       class="edit-tweet-popup-item delete"
       @click="handleDelete"
     >
@@ -44,6 +53,9 @@ export default {
           message: 'Error when delete tweet'
         })
       }
+    },
+    handleEdit(){
+      this.$emit('edit-tweet')
     }
   }
 }
@@ -88,6 +100,14 @@ export default {
       }
       span{
         color: $tweet-action-red;
+      }
+    }
+    &.edit{
+      svg{
+        fill: $color-blue 
+      }
+      span{
+        color: $color-blue;
       }
     }
   }
