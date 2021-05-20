@@ -11,7 +11,6 @@ Twitter clone made with Vue.js, Vue Router, Vuex and Axios-mock-adapter(for fake
 - Vue Router
 - Vuex
 - axios-mock-adapter (for fake REST API)
-- ...
 
 ## 📦 Installation
 

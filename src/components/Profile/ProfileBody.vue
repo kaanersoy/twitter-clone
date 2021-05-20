@@ -22,6 +22,7 @@
         v-for="tweet in userTweets"
         :key="tweet.id"
         :tweet-data="tweet"
+        @delete-tweet="handleTweetDelete"
       />
     </div>
   </div>
@@ -44,20 +45,28 @@ export default {
   computed:{
     ...mapGetters(['getMyProfileId'])
   },
-  async mounted(){
-    try{
+  mounted(){
+    this.getTweets();
+  },
+  methods:{
+    handleTweetDelete(){
+       this.getTweets()
+    },
+    async getTweets(){
+      try{
       const response = await getUsersTweets({
         id: this.getMyProfileId
       })
       this.userTweets = response.data.tweets;
       this.$store.commit("setProfileTweetCount", response.data.tweets.length)
-    }catch(err){
-      this.$notification({
-        type: 'error',
-        message: 'Error when fetching tweets'
-      })
+      }catch(err){
+        this.$notification({
+          type: 'error',
+          message: 'Error when fetching tweets'
+        })
+      }
     }
-  }
+  },
 }
 </script>
 
