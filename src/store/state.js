@@ -11,5 +11,6 @@ export default {
   lightbox: {
     state: false,
     images: [] 
-  }
+  },
+  isMobileMenuActive: false
 }

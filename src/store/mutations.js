@@ -36,5 +36,8 @@ export default {
   },
   setLightboxImages(state, payload){
     state.lightbox.images = payload
+  },
+  setMobileMenuState(state, payload){
+    state.isMobileMenuActive = payload
   }
 }

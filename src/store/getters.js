@@ -25,5 +25,8 @@ export default {
   },
   getLightboxState(state){
     return state.lightbox
+  },
+  getMobileMenuState(state){
+    return state.isMobileMenuActive
   }
 }
