@@ -180,6 +180,14 @@ export default {
   }
 
   .layout{
+    &-for-you{
+      display: none;
+      max-width: unset;
+    }
+    &-sidebar{
+      max-width: 300px;
+      width: unset;
+    }
     .mobile-menu-toggler{
       display: unset;
       position: fixed;
