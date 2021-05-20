@@ -42,6 +42,7 @@ export default {
     },
     handleSubmit(){
       this.$store.commit("toggleTweetButton")
+      this.$store.commit("setMobileMenuState", false)
     }
   }
 }
@@ -49,6 +50,7 @@ export default {
 
 <style lang="scss">
 @import '@/assets/theme/colors.scss';
+@import '@/assets/variables.scss';
 
 .tweet-popup{
   position: fixed;
@@ -56,6 +58,7 @@ export default {
   left: 0;
   height: 100vh;
   width: 100%;
+  z-index: 9999;
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -84,6 +87,14 @@ export default {
     border-radius: 1rem;
     min-width: 450px;
     background-color: $color-bg;
+  }
+}
+@media screen and (max-width: $phone) {
+  .tweet-popup{
+    &-wrapper{
+      min-width: unset;
+      width: 90%;
+    }
   }
 }
 </style>
