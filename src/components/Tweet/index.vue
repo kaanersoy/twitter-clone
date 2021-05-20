@@ -12,8 +12,18 @@
           <span class="created-at">{{ moment(tweetData.createdAt).fromNow() }}</span>
         </p>
       </div>
-      <div class="tweet-content-body">
-        <p>{{ tweetData.content }}</p>
+      <div
+        class="tweet-content-body"
+      >
+        <p v-if="!isTweetEditing">
+          {{ editedTweetData }}
+        </p>
+        <div
+          v-if="isTweetEditing"
+          class="tweet-content-edit-tweet"
+        >
+          <textarea v-model="editedTweetData" />
+        </div>
         <div
           v-if="tweetData.photos.length > 0"
           class="tweet-content-body-images"
@@ -32,7 +42,10 @@
           </div>
         </div>
       </div>
-      <div class="tweet-content-actions">
+      <div
+        v-if="!isTweetEditing"
+        class="tweet-content-actions"
+      >
         <div class="action-item comment">
           <base-icon icon="comment" />
           <span>5</span>
@@ -49,6 +62,23 @@
           <base-icon icon="share" />
         </div>
       </div>
+      <div
+        v-if="isTweetEditing"
+        class="tweet-content-edit-actions"
+      >
+        <div
+          class="action-item cancel"
+          @click="handleCancelEdit"
+        >
+          Cancel
+        </div>
+        <div
+          class="action-item save"
+          @click="handleEditTweet"
+        >
+          Save
+        </div>
+      </div>
     </div>
     <div class="tweet-edit-button">
       <div
@@ -61,6 +91,7 @@
         v-if="isEditMenuOpened"
         :tweet-id="tweetData.id"
         @delete-tweet="handleDelete"
+        @edit-tweet="handleClickToEdit"
       />
     </div>
   </div>
@@ -70,6 +101,7 @@
 import BaseIcon from '@/components/BaseIcon'
 import EditTweetPopup from '@/components/Tweet/EditTweetPopup'
 import moment from 'moment'
+import { updateTweet } from '@/services/api'
 
 export default {
   name: 'Tweet',
@@ -86,6 +118,8 @@ export default {
   data(){
     return {
       isEditMenuOpened: false,
+      isTweetEditing: false,
+      editedTweetData: this.tweetData.content
     }
   },
   computed:{
@@ -93,13 +127,36 @@ export default {
       return this.tweetData.photos.map(photo => photo.url)
     }
   },
-  mounted(){
-    console.log(this.tweetImages);
-  },
   methods:{
     moment,
     handleDelete(){
       this.$emit('delete-tweet')
+    },
+    async handleEditTweet(){
+      const request = {
+        id: this.tweetData.id,
+        content: this.editedTweetData
+      }
+      try{
+        await updateTweet(request)
+        this.$notification({
+          type: 'success',
+          message: 'Tweet is edited succesfully!'
+        })
+      }catch{
+        this.$notification({
+          type: 'error',
+          message: 'Error when editing tweet!'
+        })
+      }
+      this.isTweetEditing = false
+    },
+    handleCancelEdit(){
+      this.isTweetEditing = false
+    },
+    handleClickToEdit(){
+      this.isTweetEditing = true;
+      this.isEditMenuOpened = false;
     }
   }
 }
@@ -146,6 +203,29 @@ export default {
   &-content{
     margin-left: 10px;
     flex-grow: 1;
+    &-edit-tweet{
+      border: $border-dark;
+      margin: 1rem 0;
+      textarea{
+        appearance: none;
+        -webkit-appearance: none;
+        display: block;
+        padding: 12px;
+        font-size: 1.2rem;
+        resize: vertical;
+        background-color: transparent;
+        border: none;
+        width: 100%; 
+        min-height: 5rem;
+        max-height: 10rem;
+        border-radius: 5px;
+        color: #fff;
+        &:focus{
+          border: none;
+          outline: none;
+        }
+      }
+    }
     &-header{
       p{
         margin: 8px 0;
@@ -235,6 +315,28 @@ export default {
               color: $tweet-action-red;
             }
           }
+        }
+      }
+    }
+    &-edit-actions{
+      display: flex;
+      justify-content: flex-end;
+      .action-item{
+        cursor: pointer;
+        padding: .5rem 1rem;
+        border-radius: 999px;
+        &.cancel{
+          border: 1px solid $color-blue;
+          color: $color-blue;
+          &:hover{
+            background-color: rgba($color: $color-blue, $alpha: 0.3);
+          }
+        }
+        &.save{
+          margin-left: 1rem;
+          background-color: $color-blue;
+          color: #fff;
+          font-weight: bold;
         }
       }
     }
