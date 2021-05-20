@@ -50,9 +50,9 @@ npm run serve
 You can visit the demo from: [Cwitter Demo](https://cwitter-demo.vercel.app/)
 
 ### 🔐 Auth info
-| Username  | Password |
-| ------------- | ------------- |
-| `kaanersoy` | `password`  |
+|    | Username      | Password      |
+| -- | ------------- | ------------- |
+| 1  | `kaanersoy`   | `password`    |
 
 ## ✔ Last Updates
 
