@@ -7,7 +7,7 @@
       class="tweet-wrapper"
     >
       <tweet
-        v-for="tweet in reversedTweetData"
+        v-for="tweet in tweetData"
         :key="tweet.id"
         :tweet-data="tweet"
         @delete-tweet="handleTweetDelete"
@@ -33,10 +33,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['getMe']),
-    reversedTweetData(){
-      return this.tweetData.slice().reverse()
-    }
+    ...mapGetters(['getMe'])
   },
   mounted: async function() {
     this.getTweets()

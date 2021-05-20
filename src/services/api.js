@@ -8,7 +8,7 @@ mock.onPost("/auth", userOneAuthInfo).reply(200, {user: users[0]});
 mock.onGet("/tweets").reply(200, {tweets});
 mock.onGet("/trends").reply(200, {trends});
 mock.onPost("/tweets").reply(function (config) {
-  tweets.push(JSON.parse(config.data))
+  tweets.unshift(JSON.parse(config.data))
   return [200, tweets]
 });
 
