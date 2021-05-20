@@ -64,7 +64,7 @@ You can visit the demo from: [Cwitter Demo](https://cwitter-demo.vercel.app/)
 - [X] Add responsive design for mobile phones
 ## 🖊Authors:
 
-- [github@kaanersoy](https://github.com/kaanersoy)
+- [kaanersoy](https://github.com/kaanersoy)
 
 ## 📃 License
 
