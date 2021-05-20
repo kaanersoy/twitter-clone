@@ -26,12 +26,12 @@ git clone https://github.com/kaanersoy/twitter-clone.git
 
 With yarn:
 ```bash
-cd <project-path> && yarn
+cd ./twitter-clone && yarn
 ```
 
 With npm:
 ```bash
-cd <project-path> && npm install
+cd ./twitter-clone && npm install
 ```
 
 ### 🏃‍♂️ Start the project
