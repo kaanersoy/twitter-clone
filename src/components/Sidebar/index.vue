@@ -37,6 +37,15 @@
       </div>
     </div>
     <profile-popup />
+    <div
+      class="mobile-close-menu-button"
+      @click="$store.commit('setMobileMenuState', false)"
+    >
+      <div class="icon">
+        <BaseIcon icon="left" />
+      </div>
+      <span>Close</span>
+    </div>
   </aside>
 </template>
 
@@ -78,6 +87,7 @@ export default {
 
 <style lang="scss">
 @import '@/assets/theme/colors.scss';
+@import '@/assets/variables.scss';
 
 aside{
   position: relative;
@@ -120,6 +130,38 @@ aside{
       font-size: 1.2rem;
       border-radius: 999px;
       margin-top: 20px;
+    }
+  }
+  .mobile-close-menu-button{
+    display: none;
+  }
+}
+
+@media screen and (max-width: $phone) {
+  aside{
+    .mobile-close-menu-button{
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      display: flex;
+      align-items: center;
+      padding: 6px;
+      border-radius: 999px;
+      background-color: $color-blue;
+      .icon{
+        width: 1.2rem;
+        height: 1.2rem;
+        svg{
+          fill: #fff;
+          width: 100%;
+          height: 100%;
+        }
+      }
+      span{
+        color: #fff;
+        font-weight: bold;
+        margin-left: 8px;
+      }
     }
   }
 }
