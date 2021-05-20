@@ -35,6 +35,10 @@
       </div>
     </div>
     <tweet-popup v-if="getTweetPopupState" />
+    <Lightbox
+      v-if="getLightboxState.state"
+      :images="getLightboxState.images"
+    />
   </div>
 </template>
 
@@ -44,6 +48,7 @@ import Trends from '@/components/Trends'
 import SearchBar from '@/components/SearchBar'
 import BaseIcon from '@/components/BaseIcon'
 import TweetPopup from '@/components/TweetPopup'
+import Lightbox from '@/components/Lightbox'
 import { mapGetters } from 'vuex'
 
 export default {
@@ -53,10 +58,16 @@ export default {
     TweetPopup,
     BaseIcon,
     Trends,
-    SearchBar
+    SearchBar,
+    Lightbox
   },
   computed: {
-    ...mapGetters(['getMe','getTweetPopupState', 'getProfileTweetCount'])
+    ...mapGetters([
+      'getMe',
+      'getTweetPopupState',
+      'getProfileTweetCount', 
+      'getLightboxState'
+    ])
   }
 }
 </script>
