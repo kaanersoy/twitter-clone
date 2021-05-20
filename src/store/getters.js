@@ -22,5 +22,8 @@ export default {
   },
   getProfileTweetCount(state) {
     return state.profileTweetCount
+  },
+  getLightboxState(state){
+    return state.lightbox
   }
 }

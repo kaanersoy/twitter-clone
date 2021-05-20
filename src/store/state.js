@@ -8,4 +8,8 @@ export default {
   activeNotifications: [],
   editProfilePopup: false,
   profileTweetCount: 0,
+  lightbox: {
+    state: false,
+    images: [] 
+  }
 }

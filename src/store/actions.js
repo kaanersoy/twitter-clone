@@ -18,5 +18,13 @@ export default {
     }catch(err){
       console.log(err)
     }
+  },
+  setLightbox({commit}, payload){
+    commit('setLightboxState', true)
+    commit('setLightboxImages', payload)
+  },
+  closeLightbox({commit}){
+    commit('setLightboxState', false)
+    commit('setLightboxImages', [])
   }
 }

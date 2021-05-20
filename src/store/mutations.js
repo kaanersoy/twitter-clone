@@ -30,5 +30,11 @@ export default {
   },
   setProfileTweetCount(state, payload){
     state.profileTweetCount = payload
+  },
+  setLightboxState(state, payload){
+    state.lightbox.state = payload
+  },
+  setLightboxImages(state, payload){
+    state.lightbox.images = payload
   }
 }
