@@ -1,7 +1,10 @@
 <template>
   <div class="layout">
     <div class="layout-sidebar">
-      <div class="layout-sidebar-fixed-container">
+      <div
+        class="layout-sidebar-fixed-container"
+        :class="{active: getMobileMenuState}"
+      >
         <sidebar />
       </div>
     </div>
@@ -39,6 +42,12 @@
       v-if="getLightboxState.state"
       :images="getLightboxState.images"
     />
+    <div
+      class="mobile-menu-toggler"
+      @click="$store.commit('setMobileMenuState', !getMobileMenuState)"
+    >
+      <BaseIcon icon="hamburger" />
+    </div>
   </div>
 </template>
 
@@ -66,7 +75,8 @@ export default {
       'getMe',
       'getTweetPopupState',
       'getProfileTweetCount', 
-      'getLightboxState'
+      'getLightboxState',
+      'getMobileMenuState'
     ])
   }
 }
@@ -74,76 +84,122 @@ export default {
 
 <style lang="scss">
 @import '@/assets/theme/colors.scss';
-  .layout{
-    min-height: 100%;
-    max-width: 1290px;
+@import '@/assets/variables.scss';
+
+.layout{
+  min-height: 100%;
+  max-width: 1290px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  &-sidebar{
+      width: 100%;
+      max-width: 300px;
+    &-fixed-container{
+      position: fixed;
+      width: 100%;
+      max-width: inherit;
+    }
+  }
+  &-flow{
+    border-right: $border-dark;
+    border-left: $border-dark;
     width: 100%;
-    margin: 0 auto;
-    display: flex;
-    &-sidebar{
-        width: 100%;
-        max-width: 300px;
-      &-fixed-container{
-        position: fixed;
-        width: 100%;
-        max-width: inherit;
+    max-width: 660px;
+    min-height: 100vh;
+    .page-header{
+      border-bottom: $border-dark;
+      padding: .5rem;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      h2{
+        margin: 1rem 0;
       }
-    }
-    &-flow{
-      border-right: $border-dark;
-      border-left: $border-dark;
-      width: 100%;
-      max-width: 660px;
-      min-height: 100vh;
-      .page-header{
-        border-bottom: $border-dark;
-        padding: .5rem;
-        color: #fff;
-        display: flex;
-        align-items: center;
+      .back-button{
+        width: 2.5rem;
+        height: 2.5rem;
+        margin-right: 20px;
+        padding: 6px;
+        border-radius: 999px;
+        cursor: pointer;
+        &:hover{
+          background-color: rgba($color: $color-blue, $alpha: 0.3);
+        }
+        svg{
+          width: 100%;
+          height: 100%;
+          transform: translateX(-3px);
+          fill: $color-blue;
+        }
+      }
+      .profile-info{
         h2{
-          margin: 1rem 0;
+          margin: 0;
+          margin-bottom: 3px;
         }
-        .back-button{
-          width: 2.5rem;
-          height: 2.5rem;
-          margin-right: 20px;
-          padding: 6px;
-          border-radius: 999px;
-          cursor: pointer;
-          &:hover{
-            background-color: rgba($color: $color-blue, $alpha: 0.3);
-          }
-          svg{
-            width: 100%;
-            height: 100%;
-            transform: translateX(-3px);
-            fill: $color-blue;
-          }
+        span{
+          color: $color-dark-gray;
+          font-size: 12px;
         }
-        .profile-info{
-          h2{
-            margin: 0;
-            margin-bottom: 3px;
-          }
-          span{
-            color: $color-dark-gray;
-            font-size: 12px;
-          }
-        }
-      }
-    }
-    &-for-you{
-      width: 100%;
-      max-width: 330px;
-      margin-left: 1rem;
-      margin-top: 1rem;
-      &-fixed{
-        position: fixed;
-        width: 100%;
-        max-width: inherit;
       }
     }
   }
+  &-for-you{
+    width: 100%;
+    max-width: 330px;
+    margin-left: 1rem;
+    margin-top: 1rem;
+    &-fixed{
+      position: fixed;
+      width: 100%;
+      max-width: inherit;
+    }
+  }
+  .mobile-menu-toggler{
+    display: none;
+  }
+}
 
+@media screen and (max-width: $phone) {
+  .layout-sidebar-fixed-container{
+    background-color: $color-bg;
+    transform: translateX(-100%);
+    box-shadow: $shadow-white;
+    transition: 200ms ease;
+    padding-left: 20px;
+    &.active{
+      transform: translateX(0%);
+      z-index: 666;
+    }
+  }
+  .layout-for-you{
+    &-fixed{
+      display: none;
+    }
+  }
+
+  .layout{
+    .mobile-menu-toggler{
+      display: unset;
+      position: fixed;
+      bottom: 1rem;
+      left: 1rem;
+      width: 3rem;
+      height: 3rem;
+      padding: 8px;
+      border-radius: 999px;
+      background-color: $color-blue;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 555;
+      svg{
+        width: 100%;
+        height: 100%;
+        fill: #fff;
+      }
+    }
+  }
+}
 </style>
