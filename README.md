@@ -57,12 +57,11 @@ You can visit the demo from: [Cwitter Demo](https://cwitter-demo.vercel.app/)
 ## ✔ Last Updates
 
 - Added tweets with images & image popup for tweets
-- Added profile editting popup for Profile view
-- Added profile editting endpoint for fake REST-API
 - Edit & Delete option to tweets
+- Added profile editting popup for Profile view
 
 #### 📖 TODO List
-- [ ] Add responsive design for mobile phones
+- [X] Add responsive design for mobile phones
 ## 🖊Authors:
 
 - [github@kaanersoy](https://github.com/kaanersoy)
