@@ -66,3 +66,7 @@ You can visit the demo from: [Cwitter Demo](https://cwitter-demo.vercel.app/)
 ## 🖊Authors:
 
 - [github@kaanersoy](https://github.com/kaanersoy)
+
+## 📃 License
+
+MIT licensed, you can found in the [LICENSE](https://github.com/kaanersoy/twitter-clone/blob/master/LICENSE) file.
