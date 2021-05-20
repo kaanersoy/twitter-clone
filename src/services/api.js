@@ -12,6 +12,20 @@ mock.onPost("/tweets").reply(function (config) {
   return [200, tweets]
 });
 
+mock.onPatch("/tweets").reply(function (config) {
+  const request = JSON.parse(config.data)
+  
+  const requestedTweet = tweets.find(twt => twt.id == request.id);
+  const requestedIndex = tweets.indexOf(requestedTweet);
+
+  tweets[requestedIndex].content = request.content;
+
+  return [200, {
+    message: 'Tweet is editted succesfully',
+    id: request.id
+  }]
+});
+
 mock.onDelete("/tweets").reply(function (config) {
   const tweetId = config.tweetId
 
@@ -74,6 +88,10 @@ export async function uploadTweet(body){
 
 export async function deleteTweet(body){
   return request({type: 'delete', path: '/tweets', body})
+}
+
+export async function updateTweet(body){
+  return request({type: 'patch', path: '/tweets', body})
 }
 
 export async function getUsersTweets(body){
