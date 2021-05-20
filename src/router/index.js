@@ -26,6 +26,7 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
+  store.commit('setMobileMenuState', false)
   const isLoggedIn = store.getters.getLoginStatus
   if(isLoggedIn === false){
     if(to.name !== 'Login'){
