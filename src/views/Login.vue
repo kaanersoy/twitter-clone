@@ -98,6 +98,7 @@ export default {
 
 <style lang="scss">
 @import '@/assets/theme/colors.scss';
+@import '@/assets/variables.scss';
 
 .login{
   width: 400px;
@@ -176,6 +177,11 @@ export default {
         margin: 0 8px;
       }
     }
+  }
+}
+@media screen and (max-width: $phone) {
+  .login{
+    width: 80%;
   }
 }
 
