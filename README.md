@@ -62,7 +62,7 @@ You can visit the demo from: [Cwitter Demo](https://cwitter-demo.vercel.app/)
 
 #### 📖 TODO List
 - [X] Add responsive design for mobile phones
-## 🖊Authors:
+## 🖊 Contributors:
 
 - [kaanersoy](https://github.com/kaanersoy)
 
