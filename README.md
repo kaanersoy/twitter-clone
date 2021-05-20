@@ -61,7 +61,7 @@ You can visit the demo from: [Cwitter Demo](https://cwitter-demo.vercel.app/)
 - Added profile editting endpoint for fake REST-API
 - Edit & Delete option to tweets
 
-#### TODO List
+#### 📖 TODO List
 - [ ] Add responsive design for mobile phones
 ## 🖊Authors:
 
