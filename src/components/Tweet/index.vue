@@ -14,6 +14,23 @@
       </div>
       <div class="tweet-content-body">
         <p>{{ tweetData.content }}</p>
+        <div
+          v-if="tweetData.photos.length > 0"
+          class="tweet-content-body-images"
+        >
+          <div class="tweet-content-body-images-wrapper">
+            <div
+              v-for="(tweetPhoto, i) in tweetData.photos"
+              :key="i"
+              class="tweet-content-image-item"
+            >
+              <img
+                :src="tweetPhoto.url"
+                @click="$store.dispatch('setLightbox', tweetImages)"
+              >
+            </div>
+          </div>
+        </div>
       </div>
       <div class="tweet-content-actions">
         <div class="action-item comment">
@@ -70,6 +87,14 @@ export default {
     return {
       isEditMenuOpened: false,
     }
+  },
+  computed:{
+    tweetImages(){
+      return this.tweetData.photos.map(photo => photo.url)
+    }
+  },
+  mounted(){
+    console.log(this.tweetImages);
   },
   methods:{
     moment,
@@ -140,6 +165,25 @@ export default {
     }
     &-body{
       color: #fff;
+      &-images{
+        &-wrapper{
+          border-radius: 10px;
+          overflow: hidden;
+          border: $border-light;
+          display: flex;
+          .tweet-content-image-item{
+            cursor: zoom-in;
+            & + .tweet-content-image-item{
+              border-left: $border-light;
+            }
+            flex-grow: 1;
+            img{
+              vertical-align: middle;
+              width: 100%;
+            }
+          }
+        }
+      }
     }
     &-actions{
       display: flex;
