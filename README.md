@@ -56,7 +56,7 @@ You can visit the demo from: [Cwitter Demo](https://cwitter-demo.vercel.app/)
 
 ## 📕 Other informations
 
-## ✔ Last Updates
+### ✔ Last Updates
 
 - Added tweets with images & image popup for tweets
 - Edit & Delete option to tweets
