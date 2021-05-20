@@ -64,9 +64,10 @@ export default {
     width: 180px;
     cursor: pointer;
     padding: 1rem;
-    border-radius: 1rem;
+    border-radius: .5rem;
+    background-color: $color-bg;
     &:hover{
-      background-color: rgba($color: $color-dark-gray, $alpha: 0.3);
+      background-color: rgba($color: $hr-color, $alpha: 1);
     }
     .icon{
       width: 1.2rem;
