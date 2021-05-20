@@ -107,6 +107,7 @@ export default {
 
 <style lang="scss">
 @import '@/assets/theme/colors.scss';
+@import '@/assets/variables.scss';
 
 .tweet{
   padding: 1rem;
@@ -235,6 +236,30 @@ export default {
             }
           }
         }
+      }
+    }
+  }
+}
+@media screen and (max-width: $phone) {
+  .tweet{
+    &-content{
+      &-header{
+        span{
+          display: none;
+        }
+        .created-at{
+          margin-left: unset;
+          display: block;
+          color: rgba($color: $color-dark-gray, $alpha: 0.5);
+          margin: 5px 0;
+        }
+        .nickname{
+          display: unset;
+          color: $color-dark-gray;
+        }
+      }
+      &-actions{
+        max-width: unset;
       }
     }
   }
