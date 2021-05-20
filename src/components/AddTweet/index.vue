@@ -95,7 +95,11 @@ export default {
     }
     
     async function handleSubmit(){
-      const newTweet = new Tweet(new User(store.getters.getMe), tweetContent.value.text);
+      const newTweetContent = {
+        text: tweetContent.value.text,
+        photos: tweetContent.value.imageList
+      }
+      const newTweet = new Tweet(new User(store.getters.getMe), newTweetContent);
       try{
         await uploadTweet(newTweet);
         $notification({
@@ -120,11 +124,11 @@ export default {
     function showFiles(e){
       const [file] = e.target.files;
       const url = URL.createObjectURL(file);
-      this.tweetContent.imageList.push({url})
+      tweetContent.value.imageList.push({url})
     }
 
     function deleteImage(index){
-      this.tweetContent.imageList.splice(index, 1)
+      tweetContent.value.imageList.splice(index, 1)
     }
 
     return {
