@@ -1,9 +1,9 @@
-# Twitter Clone with Vue.js
+# Twitter Clone with Vue.js 🐦
 
 Twitter clone made with Vue.js, Vue Router, Vuex and Axios-mock-adapter(for fake REST API).
 
-- No any css library
-- One more feature than twitter: `Tweet editing 🖋`
+- Pure CSS
+- One more feature `Tweet editing 🖋`
 
 ## 💻 Techs
 
